@@ -11,9 +11,9 @@ namespace LinkedList_Csharp
     internal class  Node<t>
     {
         public t val;
-        public Node<t> next ;
+        public Node<t>? next ;
 
-        public Node(t val, Node<t> next = null)
+        public Node(t val, Node<t>? next = null)
         {
             this.val = val;
             this.next = next;
@@ -48,10 +48,14 @@ namespace LinkedList_Csharp
         }
         public IEnumerator<t> GetEnumerator()
         {
-            foreach (t val in _node_enumer)
+            Node<t>? temp = root;
+
+
+            for (temp = root; temp != null; temp = temp.next )
             {
-                yield return val;
+                yield return  temp.val;
             }
+            yield break;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
